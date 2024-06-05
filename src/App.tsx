@@ -1,13 +1,16 @@
-import React from 'react';
-import './App.css';
+import { useEffect } from 'react'
+import { Task } from './types/types'
+import axios from 'axios'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-      </header>
-    </div>
-  );
+  useEffect(() => {
+    const getTask = async () => {
+      const res = await axios.get<Task>(`${process.env.REACT_APP_API_URL}/api/todo`)
+      console.log(res.data);
+    }
+    getTask();
+  },[])
+  return <div></div>
 }
 
-export default App;
+export default App

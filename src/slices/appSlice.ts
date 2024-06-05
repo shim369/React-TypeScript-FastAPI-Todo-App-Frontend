@@ -4,7 +4,6 @@ import { Task } from '../types/types'
 
 export interface AppState {
     editedTask: Task
-    csrfTokenExp: boolean
 }
 const initialState: AppState = {
     editedTask: {
@@ -12,7 +11,6 @@ const initialState: AppState = {
         title: '',
         description: '',
     },
-    csrfTokenExp: false,
 }
 export const appSlice = createSlice({
     name: 'app',
@@ -24,11 +22,8 @@ export const appSlice = createSlice({
         resetEditedTask: (state) => {
             state.editedTask = initialState.editedTask
         },
-        toggleCsrfState: (state) => {
-            state.csrfTokenExp = !state.csrfTokenExp
-        }
     }
 })
-export const { setEditedTask, resetEditedTask, toggleCsrfState } = appSlice.actions
+export const { setEditedTask, resetEditedTask } = appSlice.actions;
 export const selectTask = (state: RootState) => state.app.editedTask;
 export default appSlice.reducer
