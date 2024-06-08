@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Task } from './types/types'
 import axios from 'axios'
 import { Box, Button, Container, Paper } from '@mui/material'
-import { blue } from '@mui/material/colors'
+import { purple } from '@mui/material/colors'
 import Header from './components/Header'
 
 function App() {
@@ -28,7 +28,7 @@ function App() {
       <Container>
         <Paper elevation={2} style={paperStyle}>
           <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-            <h2 style={{ color: '#1976d2' }}>Tasks</h2>
+            <h2 style={{ color: purple[900] }}>Tasks</h2>
           </Box>
           {tasks.map((task, index) => (
             <Box
@@ -39,20 +39,20 @@ function App() {
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
-                backgroundColor: index % 2 === 0 ? blue[50] : 'white',
+                backgroundColor: index % 2 === 0 ? purple[100] : purple[50],
               }}
             >
               <div>
                 {task.title} : {task.description}
               </div>
               <div>
-                <Button variant="contained" sx={{ margin: '0 5px' }}>
+                <Button variant="contained" color="secondary" sx={{ margin: '0 5px', backgroundColor: purple[600] }}>
                   Edit
                 </Button>
                 <Button
                   variant="contained"
                   color="secondary"
-                  sx={{ margin: '0 5px' }}
+                  sx={{ margin: '0 5px', backgroundColor: purple[900] }}
                 >
                   Delete
                 </Button>
