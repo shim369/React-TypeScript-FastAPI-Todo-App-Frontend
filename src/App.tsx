@@ -39,20 +39,34 @@ function App() {
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
-                backgroundColor: index % 2 === 0 ? purple[100] : purple[50],
+                backgroundColor: index % 2 === 0 ? purple[100] : purple[50]
               }}
             >
               <div>
                 {task.title} : {task.description}
               </div>
               <div>
-                <Button variant="contained" color="secondary" sx={{ margin: '0 5px', backgroundColor: purple[600] }}>
+                <Button
+                  variant="contained"
+                  sx={{
+                    margin: '0 5px',
+                    backgroundColor: purple[600],
+                    ':hover': {
+                      backgroundColor: purple[700],
+                    }
+                  }}
+                >
                   Edit
                 </Button>
                 <Button
                   variant="contained"
-                  color="secondary"
-                  sx={{ margin: '0 5px', backgroundColor: purple[900] }}
+                  sx={{
+                    margin: '0 5px',
+                    backgroundColor: purple[800],
+                    ':hover': {
+                      backgroundColor: purple[900],
+                    }
+                  }}
                 >
                   Delete
                 </Button>
