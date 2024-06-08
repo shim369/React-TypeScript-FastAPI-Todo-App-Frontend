@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Task } from './types/types'
 import axios from 'axios'
 import { Box, Button, Container, Paper } from '@mui/material'
-import { purple } from '@mui/material/colors'
+import { purple, grey } from '@mui/material/colors'
 import Header from './components/Header'
 
 function App() {
@@ -23,7 +23,7 @@ function App() {
     getTask()
   }, [tasks])
   return (
-    <>
+    <Box sx={{ backgroundColor: grey[100] }}>
       <Header />
       <Container>
         <Paper elevation={2} style={paperStyle}>
@@ -61,7 +61,7 @@ function App() {
           ))}
         </Paper>
       </Container>
-    </>
+    </Box>
   )
 }
 
