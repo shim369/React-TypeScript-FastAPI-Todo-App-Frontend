@@ -9,7 +9,8 @@ const initialState: AppState = {
     editedTask: {
         id: '',
         title: '',
-        description: '',
+        url: '',
+        deadline: new Date(),
     },
 }
 export const appSlice = createSlice({
