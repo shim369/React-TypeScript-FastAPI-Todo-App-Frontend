@@ -35,28 +35,28 @@ function Post() {
 
   return (
     <Container>
-      <Paper elevation={3} style={paperStyle}>
+      <div>
         <Box sx={{ display: 'flex', justifyContent: 'center' }}>
           <h2 style={{ color: purple[900] }}>Tasks</h2>
         </Box>
         <TableContainer component={Paper}>
           <Table>
             <TableHead>
-              <TableRow>
-                <TableCell sx={{ width: '30%', textAlign: 'center' }}>Title</TableCell>
-                <TableCell sx={{ width: '30%', textAlign: 'center' }}>URL</TableCell>
-                <TableCell sx={{ width: '10%', textAlign: 'center' }}>Deadline</TableCell>
-                <TableCell sx={{ width: '30%', textAlign: 'center' }}>Actions</TableCell>
+              <TableRow sx={{ backgroundColor: purple[400] }}>
+                <TableCell sx={{ width: '30%', textAlign: 'center', color: 'white' }}>Title</TableCell>
+                <TableCell sx={{ width: '30%', textAlign: 'center', color: 'white' }}>URL</TableCell>
+                <TableCell sx={{ width: '10%', textAlign: 'center', color: 'white' }}>Deadline</TableCell>
+                <TableCell sx={{ width: '30%', textAlign: 'center', color: 'white' }}>Actions</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {tasks.map((task, index) => (
-                <TableRow key={index}>
+                <TableRow key={index} sx={{ backgroundColor: index % 2 === 0 ? purple[50] : purple[100] }}>
                   <TableCell>
                     {task.title}
                   </TableCell>
                   <TableCell><a href={task.url} target="_blank" rel="noopener noreferrer">{task.url}</a></TableCell>
-                  <TableCell>{new Date(task.deadline).toLocaleDateString()}</TableCell>
+                  <TableCell sx={{ textAlign: 'center' }}>{new Date(task.deadline).toLocaleDateString()}</TableCell>
                   <TableCell sx={{ display: 'flex', justifyContent: 'center' }}>
                     <Button
                       variant="contained"
@@ -88,7 +88,7 @@ function Post() {
             </TableBody>
           </Table>
         </TableContainer>
-      </Paper>
+      </div>
     </Container>
   )
 }
