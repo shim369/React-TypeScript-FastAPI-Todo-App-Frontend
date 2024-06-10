@@ -40,25 +40,24 @@ function Post() {
           <h2 style={{ color: purple[900] }}>Tasks</h2>
         </Box>
         <TableContainer component={Paper}>
-          <Table aria-label="simple table">
+          <Table>
             <TableHead>
               <TableRow>
-                <TableCell align="center">Title</TableCell>
-                <TableCell align="center">Description</TableCell>
-                <TableCell align="center">actions</TableCell>
+                <TableCell>Title</TableCell>
+                <TableCell>Description</TableCell>
+                <TableCell>Deadline</TableCell>
+                <TableCell>Actions</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {tasks.map((task, index) => (
-                <TableRow
-                  key={index}
-                  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                >
-                  <TableCell align="center" component="th" scope="row">
+                <TableRow key={index}>
+                  <TableCell>
                     {task.title}
                   </TableCell>
-                  <TableCell align="center">{task.description}</TableCell>
-                  <TableCell align="center">
+                  <TableCell>{task.url}</TableCell>
+                  <TableCell>{new Date(task.deadline).toLocaleDateString()}</TableCell>
+                  <TableCell>
                     <Button
                       variant="contained"
                       sx={{
