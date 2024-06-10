@@ -44,7 +44,7 @@ function Post() {
             <TableHead>
               <TableRow>
                 <TableCell>Title</TableCell>
-                <TableCell>Description</TableCell>
+                <TableCell>URL</TableCell>
                 <TableCell>Deadline</TableCell>
                 <TableCell>Actions</TableCell>
               </TableRow>
