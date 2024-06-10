@@ -55,9 +55,9 @@ function Post() {
                   <TableCell>
                     {task.title}
                   </TableCell>
-                  <TableCell>{task.url}</TableCell>
+                  <TableCell><a href={task.url} target="_blank" rel="noopener noreferrer">{task.url}</a></TableCell>
                   <TableCell>{new Date(task.deadline).toLocaleDateString()}</TableCell>
-                  <TableCell>
+                  <TableCell sx={{ display: 'flex', justifyContent: 'center' }}>
                     <Button
                       variant="contained"
                       sx={{
