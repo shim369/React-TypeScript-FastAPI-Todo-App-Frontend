@@ -13,12 +13,6 @@ import {
 } from '@mui/material'
 
 function Post() {
-  const paperStyle = {
-    padding: '30px 20px',
-    maxWidth: 800,
-    margin: '30px auto',
-  }
-
   const [tasks, setTasks] = useState<Task[]>([])
 
   useEffect(() => {
