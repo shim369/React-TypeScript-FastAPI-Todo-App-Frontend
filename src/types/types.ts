@@ -1,7 +1,8 @@
 export interface Task {
     id: string
     title: string
-    description: string
+    url: string
+    deadline: Date
 }
 
 export interface UserInfo {
