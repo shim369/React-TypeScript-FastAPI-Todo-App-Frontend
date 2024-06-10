@@ -9,6 +9,7 @@ const initialState: AppState = {
     editedTask: {
         id: '',
         title: '',
+        detail: '',
         url: '',
         deadline: new Date(),
     },

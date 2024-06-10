@@ -37,22 +37,27 @@ function Post() {
           <TableHead>
             <TableRow sx={{ backgroundColor: purple[800] }}>
               <TableCell
-                sx={{ width: '30%', textAlign: 'center', color: 'white' }}
+                sx={{ width: '24%', textAlign: 'center', color: 'white' }}
               >
                 Title
               </TableCell>
               <TableCell
-                sx={{ width: '30%', textAlign: 'center', color: 'white' }}
+                sx={{ width: '24%', textAlign: 'center', color: 'white' }}
+              >
+                Detail
+              </TableCell>
+              <TableCell
+                sx={{ width: '24%', textAlign: 'center', color: 'white' }}
               >
                 URL
               </TableCell>
               <TableCell
-                sx={{ width: '10%', textAlign: 'center', color: 'white' }}
+                sx={{ textAlign: 'center', color: 'white' }}
               >
                 Deadline
               </TableCell>
               <TableCell
-                sx={{ width: '30%', textAlign: 'center', color: 'white' }}
+                sx={{ width: '24%', textAlign: 'center', color: 'white' }}
               >
                 Actions
               </TableCell>
@@ -67,6 +72,7 @@ function Post() {
                 }}
               >
                 <TableCell>{task.title}</TableCell>
+                <TableCell>{task.detail}</TableCell>
                 <TableCell>
                   <a href={task.url} target="_blank" rel="noopener noreferrer">
                     {task.url}
