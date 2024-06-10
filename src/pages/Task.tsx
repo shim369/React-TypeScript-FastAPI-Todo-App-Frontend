@@ -29,60 +29,83 @@ function Post() {
 
   return (
     <Container>
-      <div>
-        <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-          <h2 style={{ color: purple[900] }}>Tasks</h2>
-        </Box>
-        <TableContainer component={Paper}>
-          <Table>
-            <TableHead>
-              <TableRow sx={{ backgroundColor: purple[400] }}>
-                <TableCell sx={{ width: '30%', textAlign: 'center', color: 'white' }}>Title</TableCell>
-                <TableCell sx={{ width: '30%', textAlign: 'center', color: 'white' }}>URL</TableCell>
-                <TableCell sx={{ width: '10%', textAlign: 'center', color: 'white' }}>Deadline</TableCell>
-                <TableCell sx={{ width: '30%', textAlign: 'center', color: 'white' }}>Actions</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {tasks.map((task, index) => (
-                <TableRow key={index} sx={{ backgroundColor: index % 2 === 0 ? purple[50] : purple[100] }}>
-                  <TableCell>
-                    {task.title}
-                  </TableCell>
-                  <TableCell><a href={task.url} target="_blank" rel="noopener noreferrer">{task.url}</a></TableCell>
-                  <TableCell sx={{ textAlign: 'center' }}>{new Date(task.deadline).toLocaleDateString()}</TableCell>
-                  <TableCell sx={{ display: 'flex', justifyContent: 'center' }}>
-                    <Button
-                      variant="contained"
-                      sx={{
-                        margin: '0 5px',
+      <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+        <h2 style={{ color: purple[800] }}>Tasks</h2>
+      </Box>
+      <TableContainer component={Paper}>
+        <Table>
+          <TableHead>
+            <TableRow sx={{ backgroundColor: purple[800] }}>
+              <TableCell
+                sx={{ width: '30%', textAlign: 'center', color: 'white' }}
+              >
+                Title
+              </TableCell>
+              <TableCell
+                sx={{ width: '30%', textAlign: 'center', color: 'white' }}
+              >
+                URL
+              </TableCell>
+              <TableCell
+                sx={{ width: '10%', textAlign: 'center', color: 'white' }}
+              >
+                Deadline
+              </TableCell>
+              <TableCell
+                sx={{ width: '30%', textAlign: 'center', color: 'white' }}
+              >
+                Actions
+              </TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {tasks.map((task, index) => (
+              <TableRow
+                key={index}
+                sx={{
+                  backgroundColor: index % 2 === 0 ? purple[50] : purple[100],
+                }}
+              >
+                <TableCell>{task.title}</TableCell>
+                <TableCell>
+                  <a href={task.url} target="_blank" rel="noopener noreferrer">
+                    {task.url}
+                  </a>
+                </TableCell>
+                <TableCell sx={{ textAlign: 'center' }}>
+                  {new Date(task.deadline).toLocaleDateString()}
+                </TableCell>
+                <TableCell sx={{ display: 'flex', justifyContent: 'center' }}>
+                  <Button
+                    variant="contained"
+                    sx={{
+                      margin: '0 5px',
+                      backgroundColor: purple[500],
+                      ':hover': {
                         backgroundColor: purple[600],
-                        ':hover': {
-                          backgroundColor: purple[700],
-                        },
-                      }}
-                    >
-                      Edit
-                    </Button>
-                    <Button
-                      variant="contained"
-                      sx={{
-                        margin: '0 5px',
+                      },
+                    }}
+                  >
+                    Edit
+                  </Button>
+                  <Button
+                    variant="contained"
+                    sx={{
+                      margin: '0 5px',
+                      backgroundColor: purple[700],
+                      ':hover': {
                         backgroundColor: purple[800],
-                        ':hover': {
-                          backgroundColor: purple[900],
-                        },
-                      }}
-                    >
-                      Delete
-                    </Button>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </div>
+                      },
+                    }}
+                  >
+                    Delete
+                  </Button>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
     </Container>
   )
 }
