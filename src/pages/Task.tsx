@@ -43,10 +43,10 @@ function Post() {
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell>Title</TableCell>
-                <TableCell>URL</TableCell>
-                <TableCell>Deadline</TableCell>
-                <TableCell>Actions</TableCell>
+                <TableCell sx={{ width: '30%', textAlign: 'center' }}>Title</TableCell>
+                <TableCell sx={{ width: '30%', textAlign: 'center' }}>URL</TableCell>
+                <TableCell sx={{ width: '10%', textAlign: 'center' }}>Deadline</TableCell>
+                <TableCell sx={{ width: '30%', textAlign: 'center' }}>Actions</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
