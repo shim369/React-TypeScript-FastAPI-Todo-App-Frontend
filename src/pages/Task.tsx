@@ -37,17 +37,17 @@ function Post() {
           <TableHead>
             <TableRow sx={{ backgroundColor: purple[800] }}>
               <TableCell
-                sx={{ width: '24%', textAlign: 'center', color: 'white' }}
+                sx={{ width: '23%', textAlign: 'center', color: 'white' }}
               >
                 Title
               </TableCell>
               <TableCell
-                sx={{ width: '24%', textAlign: 'center', color: 'white' }}
+                sx={{ width: '23%', textAlign: 'center', color: 'white' }}
               >
                 Detail
               </TableCell>
               <TableCell
-                sx={{ width: '24%', textAlign: 'center', color: 'white' }}
+                sx={{ width: '23%', textAlign: 'center', color: 'white' }}
               >
                 URL
               </TableCell>
@@ -57,7 +57,7 @@ function Post() {
                 Deadline
               </TableCell>
               <TableCell
-                sx={{ width: '24%', textAlign: 'center', color: 'white' }}
+                sx={{ width: '23%', textAlign: 'center', color: 'white' }}
               >
                 Actions
               </TableCell>
