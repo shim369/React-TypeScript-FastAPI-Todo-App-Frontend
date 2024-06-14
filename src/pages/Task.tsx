@@ -11,6 +11,7 @@ import {
   TableHead,
   TableRow,
 } from '@mui/material'
+import { Link as RouterLink } from 'react-router-dom'
 
 function Post() {
   const [tasks, setTasks] = useState<Task[]>([])
@@ -83,6 +84,7 @@ function Post() {
                 </TableCell>
                 <TableCell sx={{ display: 'flex', justifyContent: 'center' }}>
                   <Button
+                    component={RouterLink} to={`/tasks/${task.id}/edit`}
                     variant="contained"
                     sx={{
                       margin: '0 5px',
