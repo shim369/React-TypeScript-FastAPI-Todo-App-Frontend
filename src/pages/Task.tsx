@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Task } from '../types/types'
+import { TaskTypes } from '../types/types'
 import axios from 'axios'
 import { Box, Button, Container, Paper } from '@mui/material'
 import { purple } from '@mui/material/colors'
@@ -13,8 +13,8 @@ import {
 } from '@mui/material'
 import { Link as RouterLink } from 'react-router-dom'
 
-function Post() {
-  const [tasks, setTasks] = useState<Task[]>([])
+export default function Task() {
+  const [tasks, setTasks] = useState<TaskTypes[]>([])
 
   useEffect(() => {
     const getTask = async () => {
@@ -29,21 +29,25 @@ function Post() {
   }, [tasks])
 
   const handleDelete = (id: string) => {
-    if (window.confirm("Delete this post?")) {
+    if (window.confirm('Delete this task?')) {
       axios
         .delete(`${process.env.REACT_APP_API_URL}/todo/${id}`)
         .catch((error) => {
-          console.error("Error deleting post:", error);
-        });
+          console.error('Error deleting task:', error)
+        })
     }
-  };
+  }
 
   return (
     <Container>
       <Box>
-        <h2 style={{ color: purple[800], textAlign: 'center', margin: '30px 0' }}>Tasks</h2>
+        <h2
+          style={{ color: purple[800], textAlign: 'center', margin: '30px 0' }}
+        >
+          Tasks
+        </h2>
       </Box>
-      <TableContainer component={Paper}>
+      <TableContainer component={Paper} sx={{ marginBottom: '30px' }}>
         <Table>
           <TableHead>
             <TableRow sx={{ backgroundColor: purple[800] }}>
@@ -62,9 +66,7 @@ function Post() {
               >
                 URL
               </TableCell>
-              <TableCell
-                sx={{ textAlign: 'center', color: 'white' }}
-              >
+              <TableCell sx={{ textAlign: 'center', color: 'white' }}>
                 Deadline
               </TableCell>
               <TableCell
@@ -94,7 +96,8 @@ function Post() {
                 </TableCell>
                 <TableCell sx={{ display: 'flex', justifyContent: 'center' }}>
                   <Button
-                    component={RouterLink} to={`/tasks/${task.id}/edit`}
+                    component={RouterLink}
+                    to={`/tasks/${task.id}/edit`}
                     variant="contained"
                     sx={{
                       margin: '0 5px',
@@ -128,5 +131,3 @@ function Post() {
     </Container>
   )
 }
-
-export default Post
