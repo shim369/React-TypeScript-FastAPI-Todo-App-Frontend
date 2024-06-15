@@ -4,7 +4,7 @@ import TextField from '@mui/material/TextField'
 import { Link, Container, Paper, Button } from '@mui/material'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
-import { Task } from '../types/types'
+import { TaskTypes } from '../types/types'
 import { purple } from '@mui/material/colors'
 
 export default function TaskEdit() {
@@ -15,7 +15,7 @@ export default function TaskEdit() {
   }
   const { id } = useParams()
   const [errors, setErrors] = useState<string[]>([])
-  const [task, setTask] = useState<Task>({
+  const [task, setTask] = useState<TaskTypes>({
     id: '',
     title: '',
     detail: '',
@@ -85,7 +85,15 @@ export default function TaskEdit() {
   return (
     <Container>
       <Paper elevation={3} style={paperStyle}>
-        <h2 style={{ color: purple[800], textAlign: 'center', marginBottom: '30px' }}>Edit Task</h2>
+        <h2
+          style={{
+            color: purple[800],
+            textAlign: 'center',
+            marginBottom: '30px',
+          }}
+        >
+          Edit Task
+        </h2>
         <Box
           component="form"
           onSubmit={handleSubmit}
@@ -104,6 +112,9 @@ export default function TaskEdit() {
             value={task.title}
             name="title"
             onChange={handleInputChange}
+            InputLabelProps={{
+              shrink: true,
+            }}
           />
           <TextField
             id="taskDetail"
@@ -112,6 +123,9 @@ export default function TaskEdit() {
             value={task.detail}
             name="detail"
             onChange={handleInputChange}
+            InputLabelProps={{
+              shrink: true,
+            }}
           />
           <TextField
             id="taskURL"
@@ -120,6 +134,9 @@ export default function TaskEdit() {
             value={task.url}
             name="url"
             onChange={handleInputChange}
+            InputLabelProps={{
+              shrink: true,
+            }}
           />
           <TextField
             id="taskDeadline"
@@ -133,15 +150,21 @@ export default function TaskEdit() {
             type="date"
             name="deadline"
             onChange={handleInputChange}
+            InputLabelProps={{
+              shrink: true,
+            }}
           />
 
-          <Box>
-            <ul className="text-danger">
-              {errors.map((error, index) => (
-                <li key={index}>{error}</li>
-              ))}
-            </ul>
-          </Box>
+          {errors.length > 0 && (
+            <Box>
+              <ul>
+                {errors.map((error, index) => (
+                  <li key={index}>{error}</li>
+                ))}
+              </ul>
+            </Box>
+          )}
+
           <Box
             sx={{
               display: 'flex',
