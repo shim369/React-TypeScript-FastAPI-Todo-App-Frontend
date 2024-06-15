@@ -40,8 +40,8 @@ function Post() {
 
   return (
     <Container>
-      <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-        <h2 style={{ color: purple[800] }}>Tasks</h2>
+      <Box>
+        <h2 style={{ color: purple[800], textAlign: 'center', margin: '30px 0' }}>Tasks</h2>
       </Box>
       <TableContainer component={Paper}>
         <Table>

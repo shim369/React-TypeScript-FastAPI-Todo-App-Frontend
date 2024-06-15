@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react'
 import Box from '@mui/material/Box'
 import TextField from '@mui/material/TextField'
-import { Container, Paper, Button } from '@mui/material'
+import { Link, Container, Paper, Button } from '@mui/material'
 import { red } from '@mui/material/colors'
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import { Task } from '../types/types'
+import { purple } from '@mui/material/colors'
 
 export default function TaskEdit() {
   const paperStyle = {
@@ -13,7 +14,6 @@ export default function TaskEdit() {
     maxWidth: 600,
     margin: '50px auto',
   }
-  const buttonColor = red[600]
   const { id } = useParams()
   const [errors, setErrors] = useState<string[]>([])
   const [task, setTask] = useState<Task>({
@@ -76,10 +76,7 @@ export default function TaskEdit() {
 
     if (errors.length === 0) {
       try {
-        await axios.put(
-          `${process.env.REACT_APP_API_URL}/todo/${id}`,
-          data
-        )
+        await axios.put(`${process.env.REACT_APP_API_URL}/todo/${id}`, data)
       } catch (error) {
         console.error('Error updating task:', error)
       }
@@ -89,12 +86,14 @@ export default function TaskEdit() {
   return (
     <Container>
       <Paper elevation={3} style={paperStyle}>
-        <h2 style={{ color: '#1976d2' }}>Edit Task</h2>
+        <h2 style={{ color: purple[800], textAlign: 'center', marginBottom: '30px' }}>Edit Task</h2>
         <Box
           component="form"
           onSubmit={handleSubmit}
           sx={{
-            '& > :not(style)': { m: 2, width: '25ch' },
+            display: 'flex',
+            flexDirection: 'column',
+            '& > :not(style)': { mb: 4, width: '100%' },
           }}
           noValidate
           autoComplete="off"
@@ -137,23 +136,43 @@ export default function TaskEdit() {
             onChange={handleInputChange}
           />
 
-          <div>
+          <Box>
             <ul className="text-danger">
               {errors.map((error, index) => (
                 <li key={index}>{error}</li>
               ))}
             </ul>
-          </div>
-          <Button
-            variant="contained"
-            type="submit"
-            style={{ backgroundColor: buttonColor }}
+          </Box>
+          <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              width: '100% !important',
+            }}
           >
-            Update Task
-          </Button>
+            <Button
+              variant="contained"
+              type="submit"
+              sx={{
+                margin: '0 5px',
+                backgroundColor: purple[700],
+                ':hover': {
+                  backgroundColor: purple[800],
+                },
+              }}
+            >
+              Update Task
+            </Button>
+          </Box>
         </Box>
       </Paper>
-      <Link to="/">Back to Top</Link>
+      <Link
+        href="/"
+        underline="hover"
+        sx={{ textAlign: 'center', display: 'block', marginBottom: '30px' }}
+      >
+        Back to Top
+      </Link>
     </Container>
   )
 }
