@@ -26,7 +26,17 @@ function Post() {
       }
     }
     getTask()
-  }, [])
+  }, [tasks])
+
+  const handleDelete = (id: string) => {
+    if (window.confirm("Delete this post?")) {
+      axios
+        .delete(`${process.env.REACT_APP_API_URL}/todo/${id}`)
+        .catch((error) => {
+          console.error("Error deleting post:", error);
+        });
+    }
+  };
 
   return (
     <Container>
@@ -97,6 +107,7 @@ function Post() {
                     Edit
                   </Button>
                   <Button
+                    onClick={() => handleDelete(task.id)}
                     variant="contained"
                     sx={{
                       margin: '0 5px',
