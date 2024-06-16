@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import Box from '@mui/material/Box'
 import TextField from '@mui/material/TextField'
-import { Link, Container, Paper, Button } from '@mui/material'
+import { Link, Container, Paper, Button, Typography } from '@mui/material'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import { TaskTypes } from '../types/types'
@@ -162,15 +162,38 @@ export default function TaskEdit() {
             }}
           />
 
-          {errors.length > 0 && (
-            <Box>
-              <ul>
-                {errors.map((error, index) => (
-                  <li key={index}>{error}</li>
-                ))}
-              </ul>
-            </Box>
-          )}
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center',
+              mt: 2,
+            }}
+          >
+            {errors.length > 0 && (
+              <Box
+                sx={{
+                  border: '1px solid red',
+                  borderRadius: '4px',
+                  p: 2,
+                  bgcolor: 'rgba(255, 0, 0, 0.1)',
+                  width: '100%',
+                }}
+              >
+                <Typography variant="subtitle1" color="error">
+                  Errors:
+                </Typography>
+                <ul>
+                  {errors.map((error, index) => (
+                    <Typography key={index} variant="body2" color="error">
+                      {error}
+                    </Typography>
+                  ))}
+                </ul>
+              </Box>
+            )}
+          </Box>
 
           <Box
             sx={{
