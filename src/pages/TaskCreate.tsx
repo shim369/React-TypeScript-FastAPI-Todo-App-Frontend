@@ -1,16 +1,17 @@
 import { useState } from 'react'
 import axios from 'axios'
 import TextField from '@mui/material/TextField'
-import { Box, Button, Paper } from '@mui/material'
+import { Box, Button, Paper, Typography } from '@mui/material'
 import { purple } from '@mui/material/colors'
 import { useNavigate } from 'react-router-dom'
 
 export default function TaskCreate() {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   const [title, setTitle] = useState('')
   const [detail, setDetail] = useState('')
   const [url, setUrl] = useState('')
   const [deadline, setDeadline] = useState('')
+  const [errors, setErrors] = useState<string[]>([])
   const paperStyle = {
     padding: '30px 20px',
     maxWidth: 600,
@@ -20,19 +21,37 @@ export default function TaskCreate() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const task = { title, detail, url, deadline }
-    try {
-      await axios.post(`${process.env.REACT_APP_API_URL}/todo`, task)
-      .then(() => {
-        navigate("/");
-      })
-      setTitle('')
-      setDetail('')
-      setUrl('')
-      setDeadline('')
-    } catch (error) {
-      console.error('Error adding task:', error)
+    let formErrors: string[] = []
+
+    if (!title) {
+      formErrors.push('Task Title is required')
+    }
+    if (!detail) {
+      formErrors.push('Task Detail is required')
+    }
+    if (!url) {
+      formErrors.push('Task URL is required')
+    }
+    if (!deadline) {
+      formErrors.push('Task Deadline is required')
+    }
+
+    setErrors(formErrors)
+
+    if (formErrors.length === 0) {
+      try {
+        await axios.post(`${process.env.REACT_APP_API_URL}/todo`, task)
+        navigate('/')
+        setTitle('')
+        setDetail('')
+        setUrl('')
+        setDeadline('')
+      } catch (error) {
+        console.error('Error adding task:', error)
+      }
     }
   }
+
   return (
     <Paper elevation={3} style={paperStyle}>
       <h2
@@ -96,6 +115,30 @@ export default function TaskCreate() {
             shrink: true,
           }}
         />
+
+        {errors.length > 0 && (
+          <Box
+            sx={{
+              mt: 2,
+              border: '1px solid red',
+              borderRadius: '4px',
+              p: 2,
+              bgcolor: 'rgba(255, 0, 0, 0.1)',
+            }}
+          >
+            <Typography variant="subtitle1" color="error">
+              Errors:
+            </Typography>
+            <ul>
+              {errors.map((error, index) => (
+                <Typography key={index} variant="body2" color="error">
+                  {error}
+                </Typography>
+              ))}
+            </ul>
+          </Box>
+        )}
+
         <Box
           sx={{
             display: 'flex',
