@@ -2,12 +2,13 @@ import { useEffect, useState } from 'react'
 import Box from '@mui/material/Box'
 import TextField from '@mui/material/TextField'
 import { Link, Container, Paper, Button, Typography } from '@mui/material'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { TaskTypes } from '../types/types'
 import { purple } from '@mui/material/colors'
 
 export default function TaskEdit() {
+  const navigate = useNavigate()
   const paperStyle = {
     padding: '30px 20px',
     maxWidth: 600,
@@ -83,6 +84,7 @@ export default function TaskEdit() {
     if (errors.length === 0) {
       try {
         await axios.put(`${process.env.REACT_APP_API_URL}/todo/${id}`, data)
+        navigate('/')
       } catch (error) {
         console.error('Error updating task:', error)
       }
