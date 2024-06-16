@@ -21,9 +21,7 @@ export default function TaskCreate() {
     e.preventDefault()
     const task = { title, detail, url, deadline }
     try {
-      await axios.post(`${process.env.REACT_APP_API_URL}/todo`, task, {
-        headers: { 'Content-Type': 'application/json' },
-      })
+      await axios.post(`${process.env.REACT_APP_API_URL}/todo`, task)
       .then(() => {
         navigate("/");
       })
