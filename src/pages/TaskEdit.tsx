@@ -57,8 +57,7 @@ export default function TaskEdit() {
       title: task.title,
       detail: task.detail,
       url: task.url,
-      deadline:
-        task.deadline instanceof Date ? task.deadline.toISOString() : null,
+      deadline: task.deadline ? task.deadline.toISOString().slice(0, 10) : null,
     }
 
     let errors: string[] = []
@@ -67,8 +66,16 @@ export default function TaskEdit() {
       errors.push('Task title is required!')
     }
 
+    if (!data.detail) {
+      errors.push('Task detail is required!')
+    }
+
     if (!data.url) {
       errors.push('Task URL is required!')
+    }
+
+    if (!data.deadline) {
+      errors.push('Task deadline is required!')
     }
 
     setErrors(errors)
