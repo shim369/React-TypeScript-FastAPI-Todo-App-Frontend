@@ -4,6 +4,7 @@ import TextField from '@mui/material/TextField'
 import { Box, Button, Paper, Typography } from '@mui/material'
 import { purple } from '@mui/material/colors'
 import { useNavigate } from 'react-router-dom'
+import PageTitle from '../components/PageTitle'
 
 export default function TaskCreate() {
   const navigate = useNavigate()
@@ -54,15 +55,7 @@ export default function TaskCreate() {
 
   return (
     <Paper elevation={3} style={paperStyle}>
-      <h2
-        style={{
-          color: purple[800],
-          textAlign: 'center',
-          marginBottom: '30px',
-        }}
-      >
-        Add Task
-      </h2>
+      <PageTitle>Create Task</PageTitle>
       <Box
         component="form"
         sx={{

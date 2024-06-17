@@ -12,6 +12,7 @@ import {
   TableRow,
 } from '@mui/material'
 import { Link as RouterLink } from 'react-router-dom'
+import PageTitle from '../components/PageTitle'
 
 export default function Task() {
   const [tasks, setTasks] = useState<TaskTypes[]>([])
@@ -41,11 +42,7 @@ export default function Task() {
   return (
     <Container>
       <Box>
-        <h2
-          style={{ color: purple[800], textAlign: 'center', margin: '30px 0' }}
-        >
-          Tasks
-        </h2>
+        <PageTitle>Tasks</PageTitle>
       </Box>
       <TableContainer component={Paper} sx={{ marginBottom: '30px' }}>
         <Table>

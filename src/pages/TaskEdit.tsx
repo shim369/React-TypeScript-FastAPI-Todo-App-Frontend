@@ -6,6 +6,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { TaskTypes } from '../types/types'
 import { purple } from '@mui/material/colors'
+import PageTitle from '../components/PageTitle'
 
 export default function TaskEdit() {
   const navigate = useNavigate()
@@ -94,15 +95,7 @@ export default function TaskEdit() {
   return (
     <Container>
       <Paper elevation={3} style={paperStyle}>
-        <h2
-          style={{
-            color: purple[800],
-            textAlign: 'center',
-            marginBottom: '30px',
-          }}
-        >
-          Edit Task
-        </h2>
+        <PageTitle>Edit Task</PageTitle>
         <Box
           component="form"
           onSubmit={handleSubmit}
