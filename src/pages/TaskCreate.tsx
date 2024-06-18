@@ -13,11 +13,6 @@ export default function TaskCreate() {
   const [url, setUrl] = useState('')
   const [deadline, setDeadline] = useState('')
   const [errors, setErrors] = useState<string[]>([])
-  const paperStyle = {
-    padding: '30px 20px',
-    maxWidth: 600,
-    margin: '50px auto',
-  }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -54,106 +49,108 @@ export default function TaskCreate() {
   }
 
   return (
-    <Paper elevation={3} style={paperStyle}>
+    <>
       <PageTitle>Create Task</PageTitle>
-      <Box
-        component="form"
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          '& > :not(style)': { mb: 4, width: '100%' },
-        }}
-        noValidate
-        autoComplete="off"
-        onSubmit={handleSubmit}
-      >
-        <TextField
-          id="taskTitle"
-          label="Task Title"
-          variant="outlined"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          InputLabelProps={{
-            shrink: true,
-          }}
-        />
-        <TextField
-          id="taskDetail"
-          label="Task Detail"
-          variant="outlined"
-          value={detail}
-          onChange={(e) => setDetail(e.target.value)}
-          InputLabelProps={{
-            shrink: true,
-          }}
-        />
-        <TextField
-          id="taskUrl"
-          label="Task URL"
-          variant="outlined"
-          value={url}
-          onChange={(e) => setUrl(e.target.value)}
-          InputLabelProps={{
-            shrink: true,
-          }}
-        />
-        <TextField
-          id="taskDeadline"
-          label="Task Deadline"
-          variant="outlined"
-          value={deadline}
-          onChange={(e) => setDeadline(e.target.value)}
-          type="date"
-          InputLabelProps={{
-            shrink: true,
-          }}
-        />
-
-        {errors.length > 0 && (
-          <Box
-            sx={{
-              mt: 2,
-              border: '1px solid red',
-              borderRadius: '4px',
-              p: 2,
-              bgcolor: 'rgba(255, 0, 0, 0.1)',
-            }}
-          >
-            <Typography variant="subtitle1" color="error">
-              Errors:
-            </Typography>
-            <ul>
-              {errors.map((error, index) => (
-                <Typography key={index} variant="body2" color="error">
-                  {error}
-                </Typography>
-              ))}
-            </ul>
-          </Box>
-        )}
-
+      <Paper elevation={3} className='paperStyle'>
         <Box
+          component="form"
           sx={{
             display: 'flex',
-            justifyContent: 'center',
-            width: '100% !important',
+            flexDirection: 'column',
+            '& > :not(style)': { mb: 4, width: '100%' },
           }}
+          noValidate
+          autoComplete="off"
+          onSubmit={handleSubmit}
         >
-          <Button
-            variant="contained"
-            type="submit"
+          <TextField
+            id="taskTitle"
+            label="Task Title"
+            variant="outlined"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            InputLabelProps={{
+              shrink: true,
+            }}
+          />
+          <TextField
+            id="taskDetail"
+            label="Task Detail"
+            variant="outlined"
+            value={detail}
+            onChange={(e) => setDetail(e.target.value)}
+            InputLabelProps={{
+              shrink: true,
+            }}
+          />
+          <TextField
+            id="taskUrl"
+            label="Task URL"
+            variant="outlined"
+            value={url}
+            onChange={(e) => setUrl(e.target.value)}
+            InputLabelProps={{
+              shrink: true,
+            }}
+          />
+          <TextField
+            id="taskDeadline"
+            label="Task Deadline"
+            variant="outlined"
+            value={deadline}
+            onChange={(e) => setDeadline(e.target.value)}
+            type="date"
+            InputLabelProps={{
+              shrink: true,
+            }}
+          />
+
+          {errors.length > 0 && (
+            <Box
+              sx={{
+                mt: 2,
+                border: '1px solid red',
+                borderRadius: '4px',
+                p: 2,
+                bgcolor: 'rgba(255, 0, 0, 0.1)',
+              }}
+            >
+              <Typography variant="subtitle1" color="error">
+                Errors:
+              </Typography>
+              <ul>
+                {errors.map((error, index) => (
+                  <Typography key={index} variant="body2" color="error">
+                    {error}
+                  </Typography>
+                ))}
+              </ul>
+            </Box>
+          )}
+
+          <Box
             sx={{
-              margin: '0 5px',
-              backgroundColor: purple[700],
-              ':hover': {
-                backgroundColor: purple[800],
-              },
+              display: 'flex',
+              justifyContent: 'center',
+              width: '100% !important',
             }}
           >
-            Submit
-          </Button>
+            <Button
+              variant="contained"
+              type="submit"
+              sx={{
+                margin: '0 5px',
+                backgroundColor: purple[700],
+                ':hover': {
+                  backgroundColor: purple[800],
+                },
+              }}
+            >
+              Submit
+            </Button>
+          </Box>
         </Box>
-      </Box>
-    </Paper>
+      </Paper>
+    </>
   )
 }

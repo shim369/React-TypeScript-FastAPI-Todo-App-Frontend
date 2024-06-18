@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import Box from '@mui/material/Box'
 import TextField from '@mui/material/TextField'
-import { Link, Container, Paper, Button, Typography } from '@mui/material'
+import { Link, Paper, Button, Typography } from '@mui/material'
 import { useParams, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { TaskTypes } from '../types/types'
@@ -10,11 +10,6 @@ import PageTitle from '../components/PageTitle'
 
 export default function TaskEdit() {
   const navigate = useNavigate()
-  const paperStyle = {
-    padding: '30px 20px',
-    maxWidth: 600,
-    margin: '50px auto',
-  }
   const { id } = useParams()
   const [errors, setErrors] = useState<string[]>([])
   const [task, setTask] = useState<TaskTypes>({
@@ -93,9 +88,9 @@ export default function TaskEdit() {
   }
 
   return (
-    <Container>
-      <Paper elevation={3} style={paperStyle}>
-        <PageTitle>Edit Task</PageTitle>
+    <>
+      <PageTitle>Edit Task</PageTitle>
+      <Paper elevation={3} className="paperStyle">
         <Box
           component="form"
           onSubmit={handleSubmit}
@@ -157,38 +152,28 @@ export default function TaskEdit() {
             }}
           />
 
-          <Box
-            sx={{
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center',
-              alignItems: 'center',
-              mt: 2,
-            }}
-          >
-            {errors.length > 0 && (
-              <Box
-                sx={{
-                  border: '1px solid red',
-                  borderRadius: '4px',
-                  p: 2,
-                  bgcolor: 'rgba(255, 0, 0, 0.1)',
-                  width: '100%',
-                }}
-              >
-                <Typography variant="subtitle1" color="error">
-                  Errors:
-                </Typography>
-                <ul>
-                  {errors.map((error, index) => (
-                    <Typography key={index} variant="body2" color="error">
-                      {error}
-                    </Typography>
-                  ))}
-                </ul>
-              </Box>
-            )}
-          </Box>
+          {errors.length > 0 && (
+            <Box
+              sx={{
+                mt: 2,
+                border: '1px solid red',
+                borderRadius: '4px',
+                p: 2,
+                bgcolor: 'rgba(255, 0, 0, 0.1)',
+              }}
+            >
+              <Typography variant="subtitle1" color="error">
+                Errors:
+              </Typography>
+              <ul>
+                {errors.map((error, index) => (
+                  <Typography key={index} variant="body2" color="error">
+                    {error}
+                  </Typography>
+                ))}
+              </ul>
+            </Box>
+          )}
 
           <Box
             sx={{
@@ -220,6 +205,6 @@ export default function TaskEdit() {
       >
         Back to Top
       </Link>
-    </Container>
+    </>
   )
 }
