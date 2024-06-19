@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { TaskTypes } from '../types/types'
 import axios from 'axios'
-import { Box, Button, Container, Paper } from '@mui/material'
+import { Box, Container, Paper, IconButton } from '@mui/material'
 import { purple } from '@mui/material/colors'
 import {
   Table,
@@ -13,6 +13,8 @@ import {
 } from '@mui/material'
 import { Link as RouterLink } from 'react-router-dom'
 import PageTitle from '../components/PageTitle'
+import EditIcon from '@mui/icons-material/Edit'
+import DeleteIcon from '@mui/icons-material/Delete'
 
 export default function Task() {
   const [tasks, setTasks] = useState<TaskTypes[]>([])
@@ -92,33 +94,31 @@ export default function Task() {
                   {new Date(task.deadline).toLocaleDateString()}
                 </TableCell>
                 <TableCell sx={{ display: 'flex', justifyContent: 'center' }}>
-                  <Button
+                  <IconButton
                     component={RouterLink}
                     to={`/tasks/${task.id}/edit`}
-                    variant="contained"
                     sx={{
+                      color: purple[500],
                       margin: '0 5px',
-                      backgroundColor: purple[500],
                       ':hover': {
-                        backgroundColor: purple[600],
+                        color: purple[600],
                       },
                     }}
                   >
-                    Edit
-                  </Button>
-                  <Button
+                    <EditIcon />
+                  </IconButton>
+                  <IconButton
                     onClick={() => handleDelete(task.id)}
-                    variant="contained"
                     sx={{
+                      color: purple[700],
                       margin: '0 5px',
-                      backgroundColor: purple[700],
                       ':hover': {
-                        backgroundColor: purple[800],
+                        color: purple[800],
                       },
                     }}
                   >
-                    Delete
-                  </Button>
+                    <DeleteIcon />
+                  </IconButton>
                 </TableCell>
               </TableRow>
             ))}
